@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+   Introduzca el valor <input id="inputcontador"></input>
+   <div id="contador"></div>
+   <button id="botoncomenzar" onclick="actualizarReloj()">Comenzar</button>
+   <button id="botonparar" onclick="parar()">Parar</button>
+
+<script>
+
+var totalTime = document.getElementById("inputcontador").value;
+var count=0;
+var relojCorriendo;
+
+
+function actualizarReloj() {
+
+        var totalTime = document.getElementById("inputcontador").value;
+        var tiempoReal=totalTime-count;
+        document.getElementById('contador').innerHTML = tiempoReal;
+
+                if(tiempoReal==0 || tiempoReal<0){
+
+                    document.getElementById('contador').innerHTML = "0";
+                    document.getElementById("contador").style.color="red";
+               
+                }else{
+
+                    totalTime-=1;
+                    count++;
+                    document.getElementById("contador").style.color="black";
+                    relojCorriendo=  setTimeout(function(){actualizarReloj()},1000);
+                  
+                }
+                
+}
+
+function parar(){
+
+    clearTimeout(relojCorriendo);
+    var totalTime=0;
+    var tiempoReal=0;
+
+}
+
+</script>
+
+</body>
+</html>
